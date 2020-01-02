@@ -101,4 +101,4 @@ while(result!=True):
             break
         driver.close()
     
-    time.sleep(10)
+    time.sleep(900)
