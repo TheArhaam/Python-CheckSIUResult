@@ -22,14 +22,15 @@ options = Options()
 options.add_argument('--headless')
 options.add_argument('--disable-gpu')
 
-driver = webdriver.Chrome(
-    executable_path='C:/Users/thear/PythonProjects/chromedriver.exe',
-    chrome_options=options)
+
 
 count = 0
 
 #To repeat as long as result has not been declared
 while(result!=True):
+    driver = webdriver.Chrome(
+    executable_path='C:/Users/thear/PythonProjects/chromedriver.exe',
+    chrome_options=options)
     driver.get(url)
     print('\nCHECK -',count)
 
@@ -98,5 +99,6 @@ while(result!=True):
         
         if(result):
             break
-
-    time.sleep(900)
+        driver.close()
+    
+    time.sleep(10)
