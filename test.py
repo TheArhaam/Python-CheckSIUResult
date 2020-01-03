@@ -10,30 +10,28 @@ resulturl = "https://www.examination.siu.edu.in/examination/result.html"
 myBatch = '2016-20'
 myBranch = 'B.TECH.(IT)'
 myInstitute = 'SIT'
-myPRN = '17070124501'
+myPRN = '12345678'
 mySeatNo1 = ''
 mySeatNo2 = ''
 rowSampleRange = 15
 possibleResult = False
 result = False
-delay = 900 #in seconds
+delay = 900  #in seconds
 
 #For keeping the browser out of view
 options = Options()
 options.add_argument('--headless')
 options.add_argument('--disable-gpu')
-
-
+driver = webdriver.Chrome(
+    executable_path='C:/Users/thear/PythonProjects/chromedriver.exe',
+    chrome_options=options)
 
 count = 0
 
 #To repeat as long as result has not been declared
-while(result!=True):
-    driver = webdriver.Chrome(
-    executable_path='C:/Users/thear/PythonProjects/chromedriver.exe',
-    chrome_options=options)
+while (result != True):
     driver.get(url)
-    print('\nCHECK -',count)
+    print('\nCHECK -', count)
 
     #Getting the entire table of Result Declarations
     tabledata = driver.find_element_by_css_selector(
@@ -55,19 +53,13 @@ while(result!=True):
 
     #Searching for myBatch
     while (i < (iindex + rowSampleRange) and i < maxrows and result == False):
-        branch = tablerows[i].text.split()[0]
         #GENERAL SEARCH
         if myBatch in tablerows[i].text:
             possibleResult = True
 
         #SPECIFIC SEARCH
-        batches = tablerows[i].text.split()[1].split(',')
-        for batch in batches:
-            if (batch == myBatch and branch == myBranch):
-                result = True
-                break
-            elif (batch == myBatch):
-                possibleResult = True
+        if (myBranch in tablerows[i].text) and (myBatch in tablerows[i].text):
+            result = True
 
         i = i + 1
 
@@ -80,26 +72,26 @@ while(result!=True):
         print("====================RESULT IS OUT====================")
     else:
         print('Result is not out')
-    
+
     print('CHECKED')
     count = count + 1
-    driver.close()
 
     if (result or possibleResult):
-        driver = webdriver.Chrome(
+        driver2 = webdriver.Chrome(
             executable_path='C:/Users/thear/PythonProjects/chromedriver.exe')
-        driver.get(resulturl)
+        driver2.get(resulturl)
         #IMPORTANT TO SWITCH TO THE FRAME
-        driver.switch_to_frame(driver.find_element_by_css_selector('body > iframe'))
+        driver2.switch_to_frame(
+            driver2.find_element_by_css_selector('body > iframe'))
 
-        prnInput = driver.find_element_by_css_selector('#login')
+        prnInput = driver2.find_element_by_css_selector('#login')
         prnInput.send_keys(myPRN)
 
-        loginButton = driver.find_element_by_css_selector('#form1 > div > div:nth-child(4) > div > div > div > input')
+        loginButton = driver2.find_element_by_css_selector(
+            '#form1 > div > div:nth-child(4) > div > div > div > input')
         loginButton.click()
-        
-        if(result):
-            break
-        driver.close()
-    
+
+        if (result):
+            driver.close()
+            break     
     time.sleep(delay)
