@@ -16,6 +16,7 @@ mySeatNo2 = ''
 rowSampleRange = 15
 possibleResult = False
 result = False
+delay = 900 #in seconds
 
 #For keeping the browser out of view
 options = Options()
@@ -101,4 +102,4 @@ while(result!=True):
             break
         driver.close()
     
-    time.sleep(900)
+    time.sleep(delay)
