@@ -8,6 +8,25 @@ import time
 # ====================== TO DO LIST ====================== 
 # Add GUI to make it more usable to general SIU Students
 
+# def getResult(driver2,seatno):
+#     driver2.get(resulturl)
+#     #IMPORTANT TO SWITCH TO THE FRAME
+#     driver2.switch_to_frame(
+#         driver.find_element_by_css_selector('body > iframe'))
+
+#     prnInput = driver2.find_element_by_css_selector('#login')
+#     prnInput.send_keys(myPRN)
+
+#     loginButton = driver2.find_element_by_css_selector(
+#         '#form1 > div > div:nth-child(4) > div > div > div > input')
+#     loginButton.click()
+
+#     seatInput = driver2.find_element_by_css_selector('#login')
+#     seatInput.send_keys(seatno)
+#     nextButton = driver2.find_element_by_css_selector('#form1 > div > div:nth-child(4) > div > div > div > input')
+#     nextButton.click()
+
+
 url = "https://www.examination.siu.edu.in/examination/exam_results.php"
 resulturl = "https://www.examination.siu.edu.in/examination/result.html"
 
@@ -17,8 +36,7 @@ myProgramme = 'B.TECH'
 myBranch = 'B.TECH.(IT)'
 myInstitute = 'SIT'
 myPRN = '17070124501'
-mySeatNo1 = '501551'
-mySeatNo2 = ''
+mySeatNos = ['501551','439016']
 rowSampleRange = 15
 possibleResult = False
 result = False
@@ -84,26 +102,31 @@ while (result != True):
     count = count + 1
 
     if (result or possibleResult):
-        driver2 = webdriver.Chrome(
-            executable_path='C:/Users/thear/PythonProjects/chromedriver.exe')
-        driver2.get(resulturl)
-        #IMPORTANT TO SWITCH TO THE FRAME
-        driver2.switch_to_frame(
-            driver2.find_element_by_css_selector('body > iframe'))
+        n = len(mySeatNos)
+        driversList = [webdriver.Chrome(executable_path='C:/Users/thear/PythonProjects/chromedriver.exe') for i in range(n)]
+        # driver2 = webdriver.Chrome(
+        #     executable_path='C:/Users/thear/PythonProjects/chromedriver.exe')
+        # driver2.get(resulturl)
 
-        prnInput = driver2.find_element_by_css_selector('#login')
-        prnInput.send_keys(myPRN)
+        for i in range(n):
+            driversList[i].get(resulturl)
+            #IMPORTANT TO SWITCH TO THE FRAME
+            driversList[i].switch_to_frame(
+                driversList[i].find_element_by_css_selector('body > iframe'))
 
-        loginButton = driver2.find_element_by_css_selector(
-            '#form1 > div > div:nth-child(4) > div > div > div > input')
-        loginButton.click()
+            prnInput = driversList[i].find_element_by_css_selector('#login')
+            prnInput.send_keys(myPRN)
 
-        seatInput = driver2.find_element_by_css_selector('#login')
-        seatInput.send_keys(mySeatNo1)
-        nextButton = driver2.find_element_by_css_selector('#form1 > div > div:nth-child(4) > div > div > div > input')
-        nextButton.click()
+            loginButton = driversList[i].find_element_by_css_selector(
+                '#form1 > div > div:nth-child(4) > div > div > div > input')
+            loginButton.click()
 
-        if (result):
-            driver.close()
-            break     
+            seatInput = driversList[i].find_element_by_css_selector('#login')
+            seatInput.send_keys(mySeatNos[i])
+            nextButton = driversList[i].find_element_by_css_selector('#form1 > div > div:nth-child(4) > div > div > div > input')
+            nextButton.click()
+
+            if (result):
+                driver.close()
+                break     
     time.sleep(delay)
