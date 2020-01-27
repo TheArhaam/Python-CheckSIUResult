@@ -5,13 +5,19 @@ from selenium.webdriver.chrome.options import Options
 import threading
 import time
 
+# ====================== TO DO LIST ====================== 
+# Add GUI to make it more usable to general SIU Students
+
 url = "https://www.examination.siu.edu.in/examination/exam_results.php"
 resulturl = "https://www.examination.siu.edu.in/examination/result.html"
+
+# GET EXACT VALUES FROM THE WEBSITE
 myBatch = '2016-20'
+myProgramme = 'B.TECH'
 myBranch = 'B.TECH.(IT)'
 myInstitute = 'SIT'
-myPRN = '12345678'
-mySeatNo1 = ''
+myPRN = '17070124501'
+mySeatNo1 = '501551'
 mySeatNo2 = ''
 rowSampleRange = 15
 possibleResult = False
@@ -46,13 +52,14 @@ while (result != True):
         row = tablerows[i].text
         temp = row.split()
         if (temp[1] == myInstitute):
-            iindex = i + 1
+            iindex = i #+ 1
             break
 
     i = iindex
 
     #Searching for myBatch
     while (i < (iindex + rowSampleRange) and i < maxrows and result == False):
+        # print(tablerows[i].text)
         #GENERAL SEARCH
         if myBatch in tablerows[i].text:
             possibleResult = True
@@ -90,6 +97,11 @@ while (result != True):
         loginButton = driver2.find_element_by_css_selector(
             '#form1 > div > div:nth-child(4) > div > div > div > input')
         loginButton.click()
+
+        seatInput = driver2.find_element_by_css_selector('#login')
+        seatInput.send_keys(mySeatNo1)
+        nextButton = driver2.find_element_by_css_selector('#form1 > div > div:nth-child(4) > div > div > div > input')
+        nextButton.click()
 
         if (result):
             driver.close()
