@@ -128,12 +128,19 @@ def submitClick():
     updateValues()
 
 def updateValues():
+    global myInstitute
     myInstitute = instituteEntry.get()
+    global myProgramme
     myProgramme = programmeEntry.get()
+    global myBranch
     myBranch = branchEntry.get()
+    global myBatch
     myBatch = batchEntry.get()
+    global myPRN
     myPRN = prnEntry.get()
+    global mySeatNos
     mySeatNos = seatNumEntry.get().split(',')
+    global delay
     delay = int(delayEntry.get())
     printValues()
 
