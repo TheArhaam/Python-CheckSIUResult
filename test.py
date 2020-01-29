@@ -123,7 +123,7 @@ root = tkinter.Tk()
 root.title('SIU Result')
 
 # FUNCTIONS
-
+#region
 def submitClick():
     updateValues()
 
@@ -153,11 +153,16 @@ def printValues():
     print('mySeatNos='+str(mySeatNos))
     print('delay='+str(delay))
 
+#endregion
+
 # FONTS
+#region
 labelfont = ('','15')
 entryfont = ('','12')
+#endregion
 
 # LABELS
+#region
 instituteLabel = Label(root,text='Institute: ')
 instituteLabel.config(font=labelfont)
 programmeLabel = Label(root,text='Programme: ')
@@ -172,8 +177,10 @@ seatNumLabel = Label(root,text='Seat Numbers: ')
 seatNumLabel.config(font=labelfont)
 delayLabel = Label(root,text='Delay in seconds:')
 delayLabel.config(font=labelfont)
+#endregion
 
 # ENTRY
+#region
 instituteEntry = Entry(root,width=50)
 instituteEntry.config(font=entryfont)
 programmeEntry = Entry(root,width=50)
@@ -188,11 +195,15 @@ seatNumEntry = Entry(root,width=50)
 seatNumEntry.config(font=entryfont,justify=LEFT)
 delayEntry = Entry(root,width=50)
 delayEntry.config(font=entryfont,justify=LEFT)
+#endregion
 
 # BUTTONS
+#region
 submitButton = Button(root,text='SUBMIT',command=submitClick,padx=10,pady=5)
+#endregion
 
 # GRID LAYOUT
+#region
 instituteLabel.grid(row=0,column=0,sticky=W,padx=5,pady=5); instituteEntry.grid(row=0,column=1,sticky=W,padx=5,pady=5)
 programmeLabel.grid(row=1,column=0,sticky=W,padx=5,pady=5); programmeEntry.grid(row=1,column=1,sticky=W,padx=5,pady=5)
 branchLabel.grid(row=2,column=0,sticky=W,padx=5,pady=5);    branchEntry.grid(row=2,column=1,sticky=W,padx=5,pady=5)
@@ -201,8 +212,10 @@ prnLabel.grid(row=4,column=0,sticky=W,padx=5,pady=5);       prnEntry.grid(row=4,
 seatNumLabel.grid(row=5,column=0,sticky=W,padx=5,pady=5);   seatNumEntry.grid(row=5,column=1,sticky=W,padx=5,pady=5)
 delayLabel.grid(row=6,column=0,sticky=W,padx=5,pady=5);     delayEntry.grid(row=6,column=1,sticky=W,padx=5,pady=5)
 submitButton.grid(row=7,padx=5,pady=5)
+#endregion
 
 #POSITIONING
+#region
 # Apparently a common hack to get the window size. Temporarily hide the
 # window to avoid update_idletasks() drawing the window in the wrong
 # position.
@@ -214,6 +227,7 @@ root.geometry("+%d+%d" % (x, y))
 # This seems to draw the window frame immediately, so only call deiconify()
 # after setting correct window position
 root.deiconify()
+#endregion
 
 #this actually launches the UI
 root.mainloop()
