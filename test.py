@@ -9,24 +9,7 @@ from tkinter import *
 
 # ====================== TO DO LIST ====================== 
 # Add GUI to make it more usable to general SIU Students
-
-# def getResult(driver2,seatno):
-#     driver2.get(resulturl)
-#     #IMPORTANT TO SWITCH TO THE FRAME
-#     driver2.switch_to_frame(
-#         driver.find_element_by_css_selector('body > iframe'))
-
-#     prnInput = driver2.find_element_by_css_selector('#login')
-#     prnInput.send_keys(myPRN)
-
-#     loginButton = driver2.find_element_by_css_selector(
-#         '#form1 > div > div:nth-child(4) > div > div > div > input')
-#     loginButton.click()
-
-#     seatInput = driver2.find_element_by_css_selector('#login')
-#     seatInput.send_keys(seatno)
-#     nextButton = driver2.find_element_by_css_selector('#form1 > div > div:nth-child(4) > div > div > div > input')
-#     nextButton.click()
+# Implement a drop down menu to select the data instead of entering all of it
 
 
 url = "https://www.examination.siu.edu.in/examination/exam_results.php"
@@ -139,6 +122,30 @@ def beginResultCheck():
 root = tkinter.Tk()
 root.title('SIU Result')
 
+# FUNCTIONS
+
+def submitClick():
+    updateValues()
+
+def updateValues():
+    myInstitute = instituteEntry.get()
+    myProgramme = programmeEntry.get()
+    myBranch = branchEntry.get()
+    myBatch = batchEntry.get()
+    myPRN = prnEntry.get()
+    mySeatNos = seatNumEntry.get().split(',')
+    delay = int(delayEntry.get())
+    printValues()
+
+def printValues():
+    print('myInstitute='+myInstitute)
+    print('myProgramme='+myProgramme)
+    print('myBranch='+myBranch)
+    print('myBatch='+myBatch)
+    print('myPRN='+myPRN)
+    print('mySeatNos='+str(mySeatNos))
+    print('delay='+str(delay))
+
 # FONTS
 labelfont = ('','15')
 entryfont = ('','12')
@@ -150,6 +157,8 @@ programmeLabel = Label(root,text='Programme: ')
 programmeLabel.config(font=labelfont)
 branchLabel = Label(root,text='Branch: ')
 branchLabel.config(font=labelfont)
+batchLabel = Label(root,text='Batch: ')
+batchLabel.config(font=labelfont)
 prnLabel = Label(root,text='PRN: ')
 prnLabel.config(font=labelfont)
 seatNumLabel = Label(root,text='Seat Numbers: ')
@@ -164,6 +173,8 @@ programmeEntry = Entry(root,width=50)
 programmeEntry.config(font=entryfont)
 branchEntry = Entry(root,width=50)
 branchEntry.config(font=entryfont)
+batchEntry = Entry(root,width=50)
+batchEntry.config(font=entryfont)
 prnEntry = Entry(root,width=50)
 prnEntry.config(font=entryfont)
 seatNumEntry = Entry(root,width=50)
@@ -171,13 +182,18 @@ seatNumEntry.config(font=entryfont,justify=LEFT)
 delayEntry = Entry(root,width=50)
 delayEntry.config(font=entryfont,justify=LEFT)
 
+# BUTTONS
+submitButton = Button(root,text='SUBMIT',command=submitClick,padx=10,pady=5)
+
 # GRID LAYOUT
 instituteLabel.grid(row=0,column=0,sticky=W,padx=5,pady=5); instituteEntry.grid(row=0,column=1,sticky=W,padx=5,pady=5)
 programmeLabel.grid(row=1,column=0,sticky=W,padx=5,pady=5); programmeEntry.grid(row=1,column=1,sticky=W,padx=5,pady=5)
 branchLabel.grid(row=2,column=0,sticky=W,padx=5,pady=5);    branchEntry.grid(row=2,column=1,sticky=W,padx=5,pady=5)
-prnLabel.grid(row=3,column=0,sticky=W,padx=5,pady=5);       prnEntry.grid(row=3,column=1,sticky=W,padx=5,pady=5)
-seatNumLabel.grid(row=4,column=0,sticky=W,padx=5,pady=5);   seatNumEntry.grid(row=4,column=1,sticky=W,padx=5,pady=5)
-delayLabel.grid(row=5,column=0,sticky=W,padx=5,pady=5);     delayEntry.grid(row=5,column=1,sticky=W,padx=5,pady=5)
+batchLabel.grid(row=3,column=0,sticky=W,padx=5,pady=5);    batchEntry.grid(row=3,column=1,sticky=W,padx=5,pady=5)
+prnLabel.grid(row=4,column=0,sticky=W,padx=5,pady=5);       prnEntry.grid(row=4,column=1,sticky=W,padx=5,pady=5)
+seatNumLabel.grid(row=5,column=0,sticky=W,padx=5,pady=5);   seatNumEntry.grid(row=5,column=1,sticky=W,padx=5,pady=5)
+delayLabel.grid(row=6,column=0,sticky=W,padx=5,pady=5);     delayEntry.grid(row=6,column=1,sticky=W,padx=5,pady=5)
+submitButton.grid(row=7,padx=5,pady=5)
 
 #POSITIONING
 # Apparently a common hack to get the window size. Temporarily hide the
