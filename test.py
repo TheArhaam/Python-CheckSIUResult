@@ -10,6 +10,7 @@ from tkinter import *
 # ====================== TO DO LIST ====================== 
 # Add GUI to make it more usable to general SIU Students
 # Implement a drop down menu to select the data instead of entering all of it
+# Get data from website table instead of hardcoding it in
 
 
 url = "https://www.examination.siu.edu.in/examination/exam_results.php"
@@ -153,6 +154,78 @@ def printValues():
     print('mySeatNos='+str(mySeatNos))
     print('delay='+str(delay))
 
+def getProgrammeList(institute):
+    temp = {}
+    if (institute=='SLS-Nagpur'):
+        temp = {}
+    elif (institute=='SLS-P'):
+        temp = {}
+    elif (institute=='SLS-N'):
+        temp = {}
+    elif (institute=='SLS-H'):
+        temp = {}
+    elif (institute=='SIBM-P'):
+        temp = {}
+    elif (institute=='SIIB'):
+        temp = {}
+    elif (institute=='SCMHRD'):
+        temp = {}
+    elif (institute=='SIMS'):
+        temp = {}
+    elif (institute=='SIDTM'):
+        temp = {}
+    elif (institute=='SCMS-P'):
+        temp = {}
+    elif (institute=='SIOM'):
+        temp = {}
+    elif (institute=='SIBM-B'):
+        temp = {}
+    elif (institute=='SSBF'):
+        temp = {}
+    elif (institute=='SIBM-H'):
+        temp = {}
+    elif (institute=='SICSR'):
+        temp = {}
+    elif (institute=='SCIT'):
+        temp = {}
+    elif (institute=='SIHS'):
+        temp = {}
+    elif (institute=='SSBS'):
+        temp = {}
+    elif (institute=='SIMC-P'):
+        temp = {}
+    elif (institute=='SID'):
+        temp = {}
+    elif (institute=='SCMC'):
+        temp = {}
+    elif (institute=='SSP'):
+        temp = {}
+    elif (institute=='SSE'):
+        temp = {}
+    elif (institute=='SSLA'):
+        temp = {}
+    elif (institute=='SIT'):
+        temp = {}
+    elif (institute=='SIG'):
+        temp = {}
+    elif (institute=='SSMC-B'):
+        temp = {}
+    elif (institute=='SSCA'):
+        temp = {}
+    elif (institute=='SSSS'):
+        temp = {}
+    elif (institute=='SSIS'):
+        temp = {}
+    elif (institute=='SSI'):
+        temp = {}
+    elif (institute=='SIBM -Nagpur'):
+        temp = {}
+    elif (institute=='SCMS-Noida'):
+        temp = {}
+    elif (institute=='SSPAD'):
+        temp = {}
+    elif (institute=='SCMS-Nagpur'):
+        temp = {}
 #endregion
 
 # FONTS
@@ -178,6 +251,22 @@ seatNumLabel.config(font=labelfont)
 delayLabel = Label(root,text='Delay in seconds:')
 delayLabel.config(font=labelfont)
 #endregion
+
+# STRINGVAR
+instituteStrVar = StringVar(root)
+programmeStrVar = StringVar(root)
+branchStrVar = StringVar(root)
+
+# LISTS
+instituteList = {'SLS-Nagpur','SLS-P','SLS-N','SLS-H','SIBM-P',\
+                'SIIB','SCMHRD','SIMS','SIDTM','SCMS-P',\
+                'SIOM','SIBM-B','SSBF','SIBM-H','SICSR',\
+                'SCIT','SIHS','SSBS','SIMC-P','SID',\
+                'SCMC','SSP','SSE','SSLA','SIT',\
+                'SIG','SSMC-B','SSCA','SSSS','SSIS',\
+                'SSI','SIBM -Nagpur','SCMS-Noida','SSPAD','SCMS-Nagpur'}
+programmeList = {}
+branchList = {}
 
 # ENTRY
 #region
