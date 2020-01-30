@@ -232,6 +232,7 @@ def getProgrammeList(institute):
 #region
 labelfont = ('','15')
 entryfont = ('','12')
+optionfont = ('','12')
 #endregion
 
 # LABELS
@@ -254,6 +255,7 @@ delayLabel.config(font=labelfont)
 
 # STRINGVAR
 instituteStrVar = StringVar(root)
+instituteStrVar.set('SLS-Nagpur')
 programmeStrVar = StringVar(root)
 branchStrVar = StringVar(root)
 
@@ -286,6 +288,10 @@ delayEntry = Entry(root,width=50)
 delayEntry.config(font=entryfont,justify=LEFT)
 #endregion
 
+# OPTIONMENU
+instituteOption = OptionMenu(root,instituteStrVar,*instituteList)
+instituteOption.config(font=optionfont)
+
 # BUTTONS
 #region
 submitButton = Button(root,text='SUBMIT',command=submitClick,padx=10,pady=5)
@@ -293,7 +299,8 @@ submitButton = Button(root,text='SUBMIT',command=submitClick,padx=10,pady=5)
 
 # GRID LAYOUT
 #region
-instituteLabel.grid(row=0,column=0,sticky=W,padx=5,pady=5); instituteEntry.grid(row=0,column=1,sticky=W,padx=5,pady=5)
+# instituteLabel.grid(row=0,column=0,sticky=W,padx=5,pady=5); instituteEntry.grid(row=0,column=1,sticky=W,padx=5,pady=5)
+instituteLabel.grid(row=0,column=0,sticky=W,padx=5,pady=5); instituteOption.grid(row=0,column=1,sticky=W,padx=5,pady=5)
 programmeLabel.grid(row=1,column=0,sticky=W,padx=5,pady=5); programmeEntry.grid(row=1,column=1,sticky=W,padx=5,pady=5)
 branchLabel.grid(row=2,column=0,sticky=W,padx=5,pady=5);    branchEntry.grid(row=2,column=1,sticky=W,padx=5,pady=5)
 batchLabel.grid(row=3,column=0,sticky=W,padx=5,pady=5);    batchEntry.grid(row=3,column=1,sticky=W,padx=5,pady=5)
