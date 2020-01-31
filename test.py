@@ -154,82 +154,92 @@ def printValues():
     print('mySeatNos='+str(mySeatNos))
     print('delay='+str(delay))
 
-def getProgrammeList(institute):
-    temp = {}
+def setProgrammeList():
+    global instituteStrVar
+    print(instituteStrVar.get())
+    institute = instituteStrVar.get()
+    temp = ['']
     if (institute=='SLS-Nagpur'):
-        temp = {'BA LLB','BBA LLB','LLM'}
+        temp = ['BA LLB','BBA LLB','LLM']
     elif (institute=='SLS-P'):
-        temp = {'LLM','BA LLB','BBA LLB','BA LLB (HONS)','BBA LLB (HONS)',\
-                'LLB','DTL','DIPL','DAC and ADRS','DIBL and CLI','DCL'}
+        temp = ['LLM','BA LLB','BBA LLB','BA LLB (HONS)','BBA LLB (HONS)',\
+                'LLB','DTL','DIPL','DAC and ADRS','DIBL and CLI','DCL']
     elif (institute=='SLS-N'):
-        temp = {'BA LLB','BBA LLB','LLM'}
+        temp = ['BA LLB','BBA LLB','LLM']
     elif (institute=='SLS-H'):
-        temp = {'BA LLB','BBA LLB'}
+        temp = ['BA LLB','BBA LLB']
     elif (institute=='SIBM-P'):
-        temp = {'MBA','MBA (EXE)','MBA (I & E)','PGDMM','PGDFM',\
-                'PGDICE','DBM','PGDSCOM'}
+        temp = ['MBA','MBA (EXE)','MBA (I & E)','PGDMM','PGDFM',\
+                'PGDICE','DBM','PGDSCOM']
     elif (institute=='SIIB'):
-        temp = {'MBA (IB)','MBA (AB)','MBA (EE)'}
+        temp = ['MBA (IB)','MBA (AB)','MBA (EE)']
     elif (institute=='SCMHRD'):
-        temp = {'MBA','MBA (IM)','MBA (EXE)','PGDBA','PGDHRM',\
-                'MBA (ID&M)','MBA (BA)'}
+        temp = ['MBA','MBA (IM)','MBA (EXE)','PGDBA','PGDHRM',\
+                'MBA (ID&M)','MBA (BA)']
     elif (institute=='SIMS'):
-        temp = {'MBA','MBA (EXE)','EXECUTIVE PGDM','PGDBM','PGDFM',\
-                'PGDHRM','PGDBA'}
+        temp = ['MBA','MBA (EXE)','EXECUTIVE PGDM','PGDBM','PGDFM',\
+                'PGDHRM','PGDBA']
     elif (institute=='SIDTM'):
-        temp = {'MBA (DTM)','MBA (EXE) (TM)'}
+        temp = ['MBA (DTM)','MBA (EXE) (TM)']
     elif (institute=='SCMS-P'):
-        temp = {'BBA'}
+        temp = ['BBA']
     elif (institute=='SIOM'):
-        temp = {}
+        temp = ['MBA(OM)','PGDOM']
     elif (institute=='SIBM-B'):
-        temp = {}
+        temp = ['MBA','MBA (EXE)','PGDMM','PGDBA']
     elif (institute=='SSBF'):
-        temp = {}
+        temp = ['MBA (B&F)']
     elif (institute=='SIBM-H'):
-        temp = {}
+        temp = ['MBA']
     elif (institute=='SICSR'):
-        temp = {}
+        temp = ['MBA (IT)','M.SC.(CA)','BCA','BBA (IT)','M.Sc (SS)']
     elif (institute=='SCIT'):
-        temp = {}
+        temp = ['MBA (ITBM)','MBA (EXE) (IT)','MBA (DS & DA)']
     elif (institute=='SIHS'):
-        temp = {}
+        temp = ['MBA(HHM)','B.Sc.(MT)','M.Sc.(MT)','PGDEMS','DBI',\
+                'B. Sc (RT)','MPH']
     elif (institute=='SSBS'):
-        temp = {}
+        temp = ['M.Sc.(ND)','M.Sc.(BT)']
     elif (institute=='SIMC-P'):
-        temp = {}
+        temp = ['MBA(CM)','MA (MC)']
     elif (institute=='SID'):
-        temp = {}
+        temp = ['B.Des.']
     elif (institute=='SCMC'):
-        temp = {}
+        temp = ['BA (MC)','BMS']
     elif (institute=='SSP'):
-        temp = {}
+        temp = ['BA (VA & P)']
     elif (institute=='SSE'):
-        temp = {}
+        temp = ['M.Sc.(Eco)','B.SC. (ECO) (HONOURS)']
     elif (institute=='SSLA'):
-        temp = {}
+        temp = ['B.Sc/BA (Liberal Arts)']
     elif (institute=='SIT'):
-        temp = {}
+        temp = ['B.TECH','B.TECH.(CE)','B.TECH.(CS&E)','B.TECH.(E&TCE)','M.Tech (G & ST)',\
+                'B.TECH.(IT)','B.TECH.(ME)','M.Tech (CAD&M)','M.Tech (E&TCE)','M.Tech (CS&E)']
     elif (institute=='SIG'):
-        temp = {}
+        temp = ['M.SC.(GEO)','M.Sc. (DS & SA)']
     elif (institute=='SSMC-B'):
-        temp = {}
+        temp = ['MBA (CM)']
     elif (institute=='SSCA'):
-        temp = {}
+        temp = ['B.SC. (Culinary Arts)','DB&PS']
     elif (institute=='SSSS'):
-        temp = {}
+        temp = ['MBA (SM)']
     elif (institute=='SSIS'):
-        temp = {}
+        temp = ['MA (IS)']
     elif (institute=='SSI'):
-        temp = {}
+        temp = ['M.SC.(AS)']
     elif (institute=='SIBM -Nagpur'):
-        temp = {}
+        temp = ['MBA']
     elif (institute=='SCMS-Noida'):
-        temp = {}
+        temp = ['BBA']
     elif (institute=='SSPAD'):
-        temp = {}
+        temp = ['B.Des']
     elif (institute=='SCMS-Nagpur'):
-        temp = {}
+        temp = ['BBA']
+    global programmeList
+    global programmeStrVar
+    programmeList = temp
+    # programmeStrVar.set(next(iter(programmeList)))
+    programmeStrVar.set(programmeList[0])
 #endregion
 
 # FONTS
@@ -257,26 +267,26 @@ delayLabel = Label(root,text='Delay in seconds:')
 delayLabel.config(font=labelfont)
 #endregion
 
-# STRINGVAR
-#region
-instituteStrVar = StringVar(root)
-instituteStrVar.set('SLS-Nagpur')
-programmeStrVar = StringVar(root)
-branchStrVar = StringVar(root)
-#endregion
-
 # LISTS
 #region
-instituteList = {'SLS-Nagpur','SLS-P','SLS-N','SLS-H','SIBM-P',\
+instituteList = ['SLS-Nagpur','SLS-P','SLS-N','SLS-H','SIBM-P',\
                 'SIIB','SCMHRD','SIMS','SIDTM','SCMS-P',\
                 'SIOM','SIBM-B','SSBF','SIBM-H','SICSR',\
                 'SCIT','SIHS','SSBS','SIMC-P','SID',\
                 'SCMC','SSP','SSE','SSLA','SIT',\
                 'SIG','SSMC-B','SSCA','SSSS','SSIS',\
-                'SSI','SIBM -Nagpur','SCMS-Noida','SSPAD','SCMS-Nagpur'}
-programmeList = {}
+                'SSI','SIBM -Nagpur','SCMS-Noida','SSPAD','SCMS-Nagpur']
+programmeList = ['BA LLB','BBA LLB','LLM']
 branchList = {}
 #endregion
+
+# STRINGVAR
+#region
+programmeStrVar = StringVar(root)
+instituteStrVar = StringVar(root)
+branchStrVar = StringVar(root)
+#endregion
+
 
 # ENTRY
 #region
@@ -297,8 +307,21 @@ delayEntry.config(font=entryfont,justify=LEFT)
 #endregion
 
 # OPTIONMENU
+#region
 instituteOption = OptionMenu(root,instituteStrVar,*instituteList)
 instituteOption.config(font=optionfont)
+programmeOption = OptionMenu(root,programmeStrVar,*programmeList)
+programmeOption.config(font=optionfont)
+#endregion
+
+
+# TRACE AND SET
+#region
+# programmeStrVar.set(next(iter(programmeList)))
+instituteStrVar.trace("w",setProgrammeList())
+instituteStrVar.set(instituteList[0])
+#endregion
+
 
 # BUTTONS
 #region
@@ -309,7 +332,8 @@ submitButton = Button(root,text='SUBMIT',command=submitClick,padx=10,pady=5)
 #region
 # instituteLabel.grid(row=0,column=0,sticky=W,padx=5,pady=5); instituteEntry.grid(row=0,column=1,sticky=W,padx=5,pady=5)
 instituteLabel.grid(row=0,column=0,sticky=W,padx=5,pady=5); instituteOption.grid(row=0,column=1,sticky=W,padx=5,pady=5)
-programmeLabel.grid(row=1,column=0,sticky=W,padx=5,pady=5); programmeEntry.grid(row=1,column=1,sticky=W,padx=5,pady=5)
+# programmeLabel.grid(row=1,column=0,sticky=W,padx=5,pady=5); programmeEntry.grid(row=1,column=1,sticky=W,padx=5,pady=5)
+programmeLabel.grid(row=1,column=0,sticky=W,padx=5,pady=5); programmeOption.grid(row=1,column=1,sticky=W,padx=5,pady=5)
 branchLabel.grid(row=2,column=0,sticky=W,padx=5,pady=5);    branchEntry.grid(row=2,column=1,sticky=W,padx=5,pady=5)
 batchLabel.grid(row=3,column=0,sticky=W,padx=5,pady=5);    batchEntry.grid(row=3,column=1,sticky=W,padx=5,pady=5)
 prnLabel.grid(row=4,column=0,sticky=W,padx=5,pady=5);       prnEntry.grid(row=4,column=1,sticky=W,padx=5,pady=5)
