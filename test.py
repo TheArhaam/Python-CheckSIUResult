@@ -157,25 +157,29 @@ def printValues():
 def getProgrammeList(institute):
     temp = {}
     if (institute=='SLS-Nagpur'):
-        temp = {}
+        temp = {'BA LLB','BBA LLB','LLM'}
     elif (institute=='SLS-P'):
-        temp = {}
+        temp = {'LLM','BA LLB','BBA LLB','BA LLB (HONS)','BBA LLB (HONS)',\
+                'LLB','DTL','DIPL','DAC and ADRS','DIBL and CLI','DCL'}
     elif (institute=='SLS-N'):
-        temp = {}
+        temp = {'BA LLB','BBA LLB','LLM'}
     elif (institute=='SLS-H'):
-        temp = {}
+        temp = {'BA LLB','BBA LLB'}
     elif (institute=='SIBM-P'):
-        temp = {}
+        temp = {'MBA','MBA (EXE)','MBA (I & E)','PGDMM','PGDFM',\
+                'PGDICE','DBM','PGDSCOM'}
     elif (institute=='SIIB'):
-        temp = {}
+        temp = {'MBA (IB)','MBA (AB)','MBA (EE)'}
     elif (institute=='SCMHRD'):
-        temp = {}
+        temp = {'MBA','MBA (IM)','MBA (EXE)','PGDBA','PGDHRM',\
+                'MBA (ID&M)','MBA (BA)'}
     elif (institute=='SIMS'):
-        temp = {}
+        temp = {'MBA','MBA (EXE)','EXECUTIVE PGDM','PGDBM','PGDFM',\
+                'PGDHRM','PGDBA'}
     elif (institute=='SIDTM'):
-        temp = {}
+        temp = {'MBA (DTM)','MBA (EXE) (TM)'}
     elif (institute=='SCMS-P'):
-        temp = {}
+        temp = {'BBA'}
     elif (institute=='SIOM'):
         temp = {}
     elif (institute=='SIBM-B'):
@@ -254,12 +258,15 @@ delayLabel.config(font=labelfont)
 #endregion
 
 # STRINGVAR
+#region
 instituteStrVar = StringVar(root)
 instituteStrVar.set('SLS-Nagpur')
 programmeStrVar = StringVar(root)
 branchStrVar = StringVar(root)
+#endregion
 
 # LISTS
+#region
 instituteList = {'SLS-Nagpur','SLS-P','SLS-N','SLS-H','SIBM-P',\
                 'SIIB','SCMHRD','SIMS','SIDTM','SCMS-P',\
                 'SIOM','SIBM-B','SSBF','SIBM-H','SICSR',\
@@ -269,6 +276,7 @@ instituteList = {'SLS-Nagpur','SLS-P','SLS-N','SLS-H','SIBM-P',\
                 'SSI','SIBM -Nagpur','SCMS-Noida','SSPAD','SCMS-Nagpur'}
 programmeList = {}
 branchList = {}
+#endregion
 
 # ENTRY
 #region
